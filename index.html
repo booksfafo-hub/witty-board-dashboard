@@ -15,13 +15,26 @@
     <a class="skip-link" href="#main">Skip to dashboard</a>
     <aside class="sidebar" id="sidebar">
       <div class="brand"><span class="brand-mark">W</span><div><strong>Witty</strong><span>Board intelligence</span></div></div>
-      <p class="eyebrow">Decision workspace</p>
+      <p class="rail-heading">Shared management intelligence</p>
       <nav aria-label="Dashboard sections">
-        <button class="nav-link is-active" data-view="overview"><span>01</span> Overview</button>
-        <button class="nav-link" data-view="forecast"><span>02</span> Forecast quality</button>
-        <button class="nav-link" data-view="risks"><span>03</span> Delivery risks</button>
-        <button class="nav-link" data-view="actions"><span>04</span> Management actions</button>
-        <button class="nav-link" data-view="upside"><span>05</span> Pipeline generation</button>
+        <button class="nav-link is-active" data-view="overview"><span>01 ·</span> Executive summary</button>
+        <button class="nav-link" data-view="forecast"><span>02 ·</span> Pipeline composition</button>
+        <button class="nav-link" data-view="forecast"><span>03 ·</span> Pipeline confidence</button>
+        <button class="nav-link" data-view="risks"><span>04 ·</span> Pipeline risks</button>
+        <button class="nav-link" data-view="upside"><span>05 ·</span> Pipeline generation</button>
+        <button class="nav-link" data-view="forecast"><span>06 ·</span> FX sensitivity</button>
+        <button class="nav-link" data-view="actions"><span>07 ·</span> Pipeline cash flow</button>
+        <button class="nav-link" data-view="actions"><span>08 ·</span> Management action</button>
+        <button class="nav-link" data-view="actions"><span>09 ·</span> Strategic partner</button>
+        <button class="nav-link" data-view="forecast"><span>10 ·</span> Historic weighting</button>
+      </nav>
+      <p class="rail-heading support-heading">Supporting analysis</p>
+      <nav class="support-nav" aria-label="Supporting analysis">
+        <button class="nav-link" data-view="forecast">Assumptions</button>
+        <button class="nav-link" data-view="forecast">Monthly reconciliation</button>
+        <button class="nav-link" data-view="risks">Deal movements</button>
+        <button class="nav-link" data-view="actions">Owner intelligence</button>
+        <button class="nav-link" data-view="forecast">Dictionary & definitions</button>
       </nav>
       <div class="side-note"><span class="status-dot"></span><div><b>Illustrative data</b><br />Replace with governed CRM data before use.</div></div>
     </aside>
@@ -42,6 +55,11 @@
 
       <section class="view is-visible" id="overview" aria-labelledby="overview-title">
         <div class="section-heading"><div><p class="eyebrow">01 · Executive view</p><h2 id="overview-title">What needs a decision?</h2></div><p class="section-copy">Forecast, uncertainty, and delivery timing shown separately so the board can act on the real constraint.</p></div>
+        <div class="executive-canvas">
+          <article class="canvas-forecast"><p class="eyebrow">Expected delivery</p><div class="forecast-number" id="heroForecast">—</div><p class="forecast-sub">Sales-weighted operating outlook <span id="heroStage">—</span> stage benchmark</p><div class="hero-phasing" id="heroPhasing" aria-label="Monthly expected delivery profile"></div><div class="canvas-footer"><span>Management scenario</span><b id="heroRange">—</b></div></article>
+          <article class="canvas-reliability"><div class="canvas-label"><p class="eyebrow">Forecast reliability</p><span class="canvas-status" id="heroStatus">Review</span></div><div class="ring-and-score"><div class="reliability-ring" id="heroRing"><b id="heroScore">—</b><span>/100</span></div><div><strong>One shared diagnostic</strong><p id="heroScoreCopy">—</p></div></div><div class="canvas-driver-grid" id="heroDrivers"></div></article>
+          <article class="canvas-action"><p class="eyebrow">Decision required</p><h3 id="heroActionTitle">—</h3><p id="heroActionCopy">—</p><div class="action-facts"><div><span>Due</span><b id="heroActionDue">—</b></div><div><span>Accountable</span><b id="heroActionOwner">—</b></div></div><button class="canvas-link" data-jump="actions">Open action register <span>→</span></button></article>
+        </div>
         <div class="decision-callout"><div><p class="eyebrow">Board focus</p><h3 id="calloutTitle">Protect the December delivery plan</h3><p id="calloutText">A material share of the 2026 forecast closes in the final month. Confirm delivery capacity, acceptance milestones, and cash conversion for the largest deals.</p></div><button class="text-button" data-jump="actions">View assigned actions <span>→</span></button></div>
         <div class="kpi-grid" id="kpiGrid"></div>
         <div class="two-col">
@@ -80,6 +98,7 @@
       <footer>Original dashboard design · Illustrative figures only · Last refreshed 20 Oct 2026</footer>
     </main>
     <script src="app.js"></script>
+    <script src="hero.js"></script>
   </body>
 </html>
 
