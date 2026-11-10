@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="supplemental.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to dashboard</a>
@@ -47,12 +48,17 @@
           <article class="card"><div class="card-head"><div><p class="eyebrow">Forecast range</p><h3>Expected delivery, not a promise</h3></div><span class="pill neutral">Scenario range</span></div><div class="range-plot" id="rangePlot"></div><div class="range-labels"><span>P10 <b id="p10">—</b></span><span>Expected <b id="expected">—</b></span><span>P90 <b id="p90">—</b></span></div><p class="caption">Range is a management scenario using documented assumptions. It is not a statistical accuracy guarantee.</p></article>
           <article class="card"><div class="card-head"><div><p class="eyebrow">Forecast quality</p><h3>One transparent reliability score</h3></div><span class="score" id="score">—</span></div><div class="score-track"><div id="scoreFill"></div></div><div class="driver-list" id="drivers"></div><p class="caption">Score summarizes timing concentration, probability gap, data freshness, and deal concentration. Higher is more reliable.</p></article>
         </div>
+        <div class="analysis-grid">
+          <article class="card composition-card"><div class="card-head"><div><p class="eyebrow">Pipeline composition</p><h3>What is carrying the forecast?</h3></div><span class="pill neutral">Expected EUR</span></div><div class="composition-chart" id="compositionChart"></div><div class="composition-legend"><span><i class="legend-stage"></i> Stage benchmark</span><span><i class="legend-sales"></i> Expected forecast</span></div><p class="caption">The expected forecast must remain explainable by stage progression and current deal evidence.</p></article>
+          <article class="card insight-card"><p class="eyebrow">CFO briefing</p><h3>Three things to carry into the meeting</h3><div class="briefing-list" id="briefingList"></div><button class="text-button inverse" data-jump="risks">Open risk detail <span>→</span></button></article>
+        </div>
         <article class="card"><div class="card-head"><div><p class="eyebrow">Monthly delivery profile</p><h3>When the expected pipeline lands</h3></div><span class="pill warning" id="timingPill">—</span></div><div class="bar-chart" id="phasing"></div><p class="caption">Expected weighted delivery by contractual close month. Cash receipts may occur later.</p></article>
       </section>
 
       <section class="view" id="forecast" aria-labelledby="forecast-title">
         <div class="section-heading"><div><p class="eyebrow">02 · Forecast quality</p><h2 id="forecast-title">Make uncertainty useful</h2></div><p class="section-copy">The forecast uses one reconciled expected value. Alternative weightings are evidence, not stacked risk adjustments.</p></div>
         <div class="two-col"><article class="card"><p class="eyebrow">Reconciliation</p><h3>Forecast basis</h3><table><thead><tr><th>Measure</th><th>EUR</th><th>Use</th></tr></thead><tbody id="reconTable"></tbody></table></article><article class="card"><p class="eyebrow">Model guardrails</p><h3>What this does not claim</h3><ul class="guardrails"><li>Opportunity outcomes can be correlated; the range includes an explicit portfolio-risk buffer.</li><li>Pipeline is not signed backlog, recognized revenue, or cash.</li><li>Any material change in close dates, values, or evidence requires a forecast refresh.</li><li>Historical win rates are evidence, not a substitute for deal-specific judgment.</li></ul></article></div>
+        <article class="card sensitivity-card"><div><p class="eyebrow">Decision sensitivity</p><h3>How management choices move the outlook</h3></div><div class="sensitivity-grid"><div><span>Base expected forecast</span><strong id="sensitivityBase">—</strong></div><div><span>Probability evidence reset</span><strong id="sensitivityProbability">—</strong><small>Stage benchmark</small></div><div><span>30-day slip on top five</span><strong id="sensitivitySlip">—</strong><small>Delivery timing effect</small></div><div><span>FX downside case</span><strong id="sensitivityFx">—</strong><small>Expected EUR effect</small></div></div></article>
       </section>
 
       <section class="view" id="risks" aria-labelledby="risks-title">

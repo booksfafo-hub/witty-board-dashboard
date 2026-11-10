@@ -1,0 +1,27 @@
+.analysis-grid { display: grid; grid-template-columns: 1.35fr .95fr; gap: 18px; margin: 18px 0; }
+.composition-card { min-height: 330px; }
+.composition-chart { display: grid; gap: 14px; margin: 25px 0 18px; }
+.composition-row { display: grid; grid-template-columns: 120px 1fr 70px; gap: 12px; align-items: center; font-size: 12px; }
+.composition-row > span { color: var(--muted); }
+.composition-bars { height: 15px; border-radius: 12px; background: #f1ebee; position: relative; overflow: hidden; }
+.composition-stage, .composition-sales { position: absolute; left: 0; border-radius: 12px; }
+.composition-stage { height: 100%; background: #dbafc4; }
+.composition-sales { height: 5px; top: 5px; background: var(--fuchsia-dark); }
+.composition-value { text-align: right; font: 12px 'DM Mono', monospace; }
+.composition-legend { display: flex; gap: 16px; color: var(--muted); font-size: 12px; }
+.composition-legend i { display: inline-block; width: 16px; height: 6px; border-radius: 6px; margin-right: 5px; vertical-align: middle; }
+.legend-stage { background: #dbafc4; }.legend-sales { background: var(--fuchsia-dark); }
+.insight-card { background: linear-gradient(150deg, #83164d, #440d2b); color: #fff; box-shadow: none; }
+.insight-card .eyebrow { color: #f5aac9; }.insight-card h3 { font-size: 23px; }
+.briefing-list { display: grid; gap: 13px; margin: 20px 0; }
+.briefing-item { display: grid; grid-template-columns: 26px 1fr; gap: 10px; font-size: 13px; color: #f8dce8; }
+.briefing-item b { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: #b72e70; color: #fff; font: 12px 'DM Mono', monospace; }
+.text-button.inverse { border-color: #d88aae; margin-top: 5px; }
+.sensitivity-card { margin-top: 18px; display: flex; justify-content: space-between; gap: 32px; align-items: center; }
+.sensitivity-grid { display: grid; grid-template-columns: repeat(4, minmax(110px, 1fr)); gap: 18px; flex: 1; }
+.sensitivity-grid div { border-left: 2px solid var(--line); padding-left: 13px; }
+.sensitivity-grid span, .sensitivity-grid small { display: block; color: var(--muted); font-size: 12px; }
+.sensitivity-grid strong { font: 21px Fraunces, serif; display: block; margin: 4px 0; }
+.sensitivity-grid div:first-child { border-color: var(--fuchsia); }
+@media (max-width: 1000px) { .analysis-grid { grid-template-columns: 1fr; }.sensitivity-card { display: block; }.sensitivity-grid { margin-top: 20px; } }
+@media (max-width: 760px) { .analysis-grid { grid-template-columns: 1fr; }.composition-row { grid-template-columns: 88px 1fr 56px; gap: 8px; }.sensitivity-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }.sensitivity-card { display: block; } }
