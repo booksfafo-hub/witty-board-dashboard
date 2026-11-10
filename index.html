@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="A board-ready pipeline intelligence dashboard." />
+    <title>Witty Board Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to dashboard</a>
+    <aside class="sidebar" id="sidebar">
+      <div class="brand"><span class="brand-mark">W</span><div><strong>Witty</strong><span>Board intelligence</span></div></div>
+      <p class="eyebrow">Decision workspace</p>
+      <nav aria-label="Dashboard sections">
+        <button class="nav-link is-active" data-view="overview"><span>01</span> Overview</button>
+        <button class="nav-link" data-view="forecast"><span>02</span> Forecast quality</button>
+        <button class="nav-link" data-view="risks"><span>03</span> Delivery risks</button>
+        <button class="nav-link" data-view="actions"><span>04</span> Management actions</button>
+        <button class="nav-link" data-view="upside"><span>05</span> Pipeline generation</button>
+      </nav>
+      <div class="side-note"><span class="status-dot"></span><div><b>Illustrative data</b><br />Replace with governed CRM data before use.</div></div>
+    </aside>
+
+    <main id="main">
+      <header class="topbar">
+        <button class="menu-button" id="menuButton" aria-controls="sidebar" aria-expanded="false">Menu</button>
+        <div><p class="eyebrow">Witty · Board pack</p><h1>Pipeline intelligence</h1></div>
+        <div class="snapshot"><span>Reporting snapshot</span><b>20 Oct 2026</b><small>EUR · illustrative dataset</small></div>
+      </header>
+
+      <section class="controls" aria-label="Planning horizon">
+        <div><p class="eyebrow">Planning horizon</p><div class="year-tabs" role="group" aria-label="Forecast year">
+          <button class="year is-active" data-year="2026">2026</button><button class="year" data-year="2027">2027</button><button class="year" data-year="all">All years</button>
+        </div></div>
+        <div class="governance"><span>Governance status</span><b id="governanceText">Review required</b></div>
+      </section>
+
+      <section class="view is-visible" id="overview" aria-labelledby="overview-title">
+        <div class="section-heading"><div><p class="eyebrow">01 · Executive view</p><h2 id="overview-title">What needs a decision?</h2></div><p class="section-copy">Forecast, uncertainty, and delivery timing shown separately so the board can act on the real constraint.</p></div>
+        <div class="decision-callout"><div><p class="eyebrow">Board focus</p><h3 id="calloutTitle">Protect the December delivery plan</h3><p id="calloutText">A material share of the 2026 forecast closes in the final month. Confirm delivery capacity, acceptance milestones, and cash conversion for the largest deals.</p></div><button class="text-button" data-jump="actions">View assigned actions <span>→</span></button></div>
+        <div class="kpi-grid" id="kpiGrid"></div>
+        <div class="two-col">
+          <article class="card"><div class="card-head"><div><p class="eyebrow">Forecast range</p><h3>Expected delivery, not a promise</h3></div><span class="pill neutral">Scenario range</span></div><div class="range-plot" id="rangePlot"></div><div class="range-labels"><span>P10 <b id="p10">—</b></span><span>Expected <b id="expected">—</b></span><span>P90 <b id="p90">—</b></span></div><p class="caption">Range is a management scenario using documented assumptions. It is not a statistical accuracy guarantee.</p></article>
+          <article class="card"><div class="card-head"><div><p class="eyebrow">Forecast quality</p><h3>One transparent reliability score</h3></div><span class="score" id="score">—</span></div><div class="score-track"><div id="scoreFill"></div></div><div class="driver-list" id="drivers"></div><p class="caption">Score summarizes timing concentration, probability gap, data freshness, and deal concentration. Higher is more reliable.</p></article>
+        </div>
+        <article class="card"><div class="card-head"><div><p class="eyebrow">Monthly delivery profile</p><h3>When the expected pipeline lands</h3></div><span class="pill warning" id="timingPill">—</span></div><div class="bar-chart" id="phasing"></div><p class="caption">Expected weighted delivery by contractual close month. Cash receipts may occur later.</p></article>
+      </section>
+
+      <section class="view" id="forecast" aria-labelledby="forecast-title">
+        <div class="section-heading"><div><p class="eyebrow">02 · Forecast quality</p><h2 id="forecast-title">Make uncertainty useful</h2></div><p class="section-copy">The forecast uses one reconciled expected value. Alternative weightings are evidence, not stacked risk adjustments.</p></div>
+        <div class="two-col"><article class="card"><p class="eyebrow">Reconciliation</p><h3>Forecast basis</h3><table><thead><tr><th>Measure</th><th>EUR</th><th>Use</th></tr></thead><tbody id="reconTable"></tbody></table></article><article class="card"><p class="eyebrow">Model guardrails</p><h3>What this does not claim</h3><ul class="guardrails"><li>Opportunity outcomes can be correlated; the range includes an explicit portfolio-risk buffer.</li><li>Pipeline is not signed backlog, recognized revenue, or cash.</li><li>Any material change in close dates, values, or evidence requires a forecast refresh.</li><li>Historical win rates are evidence, not a substitute for deal-specific judgment.</li></ul></article></div>
+      </section>
+
+      <section class="view" id="risks" aria-labelledby="risks-title">
+        <div class="section-heading"><div><p class="eyebrow">03 · Delivery risks</p><h2 id="risks-title">Focus on the risks that can move the plan</h2></div><p class="section-copy">Each risk has a definition, exposure, decision owner, and next checkpoint.</p></div>
+        <div class="risk-grid" id="riskGrid"></div>
+        <article class="card"><p class="eyebrow">Exposure watchlist</p><h3>Largest expected contributions</h3><div class="table-scroll"><table><thead><tr><th>Opportunity</th><th>Owner</th><th>Expected EUR</th><th>Primary risk</th><th>Last evidence</th></tr></thead><tbody id="watchlist"></tbody></table></div></article>
+      </section>
+
+      <section class="view" id="actions" aria-labelledby="actions-title">
+        <div class="section-heading"><div><p class="eyebrow">04 · Management actions</p><h2 id="actions-title">Turn risk into a dated decision</h2></div><p class="section-copy">Actions are deliberately narrow: owner, action, decision needed, and deadline.</p></div>
+        <div class="action-list" id="actionList"></div>
+      </section>
+
+      <section class="view" id="upside" aria-labelledby="upside-title">
+        <div class="section-heading"><div><p class="eyebrow">05 · Pipeline generation</p><h2 id="upside-title">Exploratory pipeline is not forecast</h2></div><p class="section-copy">This section is separated from the operating forecast until the model meets the agreed validation threshold.</p></div>
+        <article class="card upside-card"><div><p class="eyebrow">Commercial capacity scenario</p><h3>Potential qualified pipeline: <span id="upsideValue">—</span></h3><p id="upsideCopy">—</p></div><div class="validation"><span>Validation status</span><strong>Not approved for planning</strong><small>Use only to set prospecting activity targets. Do not add to revenue, cash, or the board forecast.</small></div></article>
+        <div class="two-col"><article class="card"><p class="eyebrow">Required before promotion</p><h3>Validation gates</h3><ol class="gates"><li>Out-of-sample value error within an agreed tolerance.</li><li>Bias review by region, sector, and deal size.</li><li>Conversion and time-to-close assumptions documented separately.</li><li>Commercial owner signs off on capacity and investment needs.</li></ol></article><article class="card"><p class="eyebrow">Decision rule</p><h3>Keep the financial plan clean</h3><p>Potential lead generation can inform sales capacity choices. It becomes forecast only after an opportunity exists, is qualified, and is assessed through the same governed probability process as every other deal.</p></article></div>
+      </section>
+      <footer>Original dashboard design · Illustrative figures only · Last refreshed 20 Oct 2026</footer>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
+
